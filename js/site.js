@@ -25,6 +25,7 @@ function reverseString(str) {
 // display the result
 function displayString(str) {
 
-  document.getElementById('results').innerHTML = `<tr><td><b>${str}</b></td></tr>`;
+  document.getElementById('msg').innerHTML = `${str}`;
+  // document.querySelector('invisible').classList.remove('invisible');
 
 }
