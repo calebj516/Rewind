@@ -1,31 +1,36 @@
 
 // get the string from the UI
-
+// controller function
 function getString() {
+
+  document.getElementById('alert').classList.add('invisible');
   // get string from the page
   let userString = document.getElementById('userInput').value;
   // call reverseString
   let reversedString = reverseString(userString);
-  // console.log(reversedString);
   displayString(reversedString);
 }
 
 // generate the string in reverse
+// logic function
 function reverseString(str) {
-  let len = str.length;
-  let result = "";
 
-  for(let i = len - 1; i >= 0; i--){
-    result += str[i];
+  let reversed = [];
+
+  for(let i = str.length - 1; i >= 0; i--){
+    reversed.push(str[i]);
   }
 
-  return result;
+  return reversed;
 }
 
 // display the result
-function displayString(str) {
+// view function
+function displayString(revString) {
 
-  document.getElementById('msg').innerHTML = `${str}`;
-  // document.querySelector('invisible').classList.remove('invisible');
+  // write to the page
+  document.getElementById('msg').innerHTML = `Your string reversed is: ${revString.join('')}`;
+  // show the alert box
+  document.getElementById('alert').classList.remove('invisible');
 
 }
