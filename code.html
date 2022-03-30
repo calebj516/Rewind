@@ -94,8 +94,6 @@
                   // get the string from the UI
                   // controller function
                   function getString() {
-                    // hide the element displaying the result to start off.
-                    document.getElementById('alert').classList.add('invisible');
                     // get string from the page
                     let userString = document.getElementById('userInput').value;
                     // call reverseString
@@ -119,10 +117,13 @@
                   // display the result
                   // view function
                   function displayString(revString) {
-                    // write to the page
-                    document.getElementById('msg').innerHTML = `Your string reversed is: ${revString}`;
-                    // show the alert box
-                    document.getElementById('alert').classList.remove('invisible');
+                    if(revString){
+                      let myModal = new bootstrap.Modal(document.getElementById('resultModal'));
+                      // display return message in modal header
+                      document.getElementById('modalBody').innerHTML = `Your string reversed is: ${revString}`;
+                      // unhide the modal
+                      myModal.toggle();
+                    }
                   }
               </code>
             </pre>
@@ -131,7 +132,7 @@
             <p>The Code is structured in three functions.</p>
             <h5>Get String</h5>
             <p>
-              getString is a function that starts everything off by hiding the element that will contain our result. It then retrieves the string from the input element, assigning its value to a variable called userString. This is passed to the reverseString function, which will return the string in reverse, and this reversed string is then passed to displayString displaying the final result.
+              getString is a function that starts everything off by retrieving the string from the input element, assigning its value to a variable called userString. This is passed to the reverseString function, which will return the string in reverse, and this reversed string is then passed to displayString displaying the final result.
             </p>
             <h5>Reverse String</h5>
             <p>
@@ -139,7 +140,7 @@
             </p>
             <h5>Display String</h5>
             <p>
-              displayString is a function that takes the reversed string and displays it on the page. It achieves this by retrieving the element with an id of 'msg' from the page by using the Document method getElementById, and assigning a template literal with a message containing the reversed string to this element's inner HTML. Finally, it makes this message visible by using the same Document method to retrieve the element with an id of 'alert' and removing the 'invisible' class from it.
+              displayString is a function that takes the reversed string and displays it on the page. It achieves this by instantiating a modal, passing in an element retrieved from the page by id. The reversed string is displayed in the body of the modal, and finally the modal is displayed on the page by calling the toggle method.
             </p>
           </div>
         </div>

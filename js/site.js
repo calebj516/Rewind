@@ -1,8 +1,6 @@
 // get the string from the UI
 // controller function
 function getString() {
-  // hide the element displaying the result to start off.
-  document.getElementById('alert').classList.add('invisible');
   // get string from the page
   let userString = document.getElementById('userInput').value;
   // call reverseString
@@ -26,8 +24,11 @@ function reverseString(str) {
 // display the result
 // view function
 function displayString(revString) {
-  // write to the page
-  document.getElementById('msg').innerHTML = `Your string reversed is: ${revString}`;
-  // show the alert box
-  document.getElementById('alert').classList.remove('invisible');
+  if(revString){
+    let myModal = new bootstrap.Modal(document.getElementById('resultModal'));
+    // display return message in modal header
+    document.getElementById('modalBody').innerHTML = `Your string reversed is: ${revString}`;
+    // unhide the modal
+    myModal.toggle();
+  }
 }
